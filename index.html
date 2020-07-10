@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <title>月月有好礼，锦鲤就是你</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/flexible.js"></script>
+    <!-- <script type="text/javascript" src="js/scode.js"></script> -->
+    <script src="http://smsp.epicc.com.cn/branches/webpage/webpage/pub/wap/scode-vue/monitor/scode.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+    <!-- 轻提示 -->
+    <div class="tipsBox">
+        <span class="tips"></span>
+    </div>
+    <!-- 首页 -->
+    <div class="home">
+        <div class="top"></div>
+        <div class="kits"></div>
+        <div class="startGame" id="startGame"></div>
+    </div>
+    <!-- 游戏页面 -->
+    <div class="gamePage">
+        <div class="top"></div>
+        <img class="one" src="img/c1.png" alt="" srcset="">
+        <img class="two" src="img/c2.png" alt="" srcset="">
+        <img class="three" src="img/c3.png" alt="" srcset="">
+        <div class="time"></div>
+        <div class="gameBox">
+            <div class="road">
+                <!-- <div class="water" style="top: 0em; left: 0rem;"></div> -->
+                <div class="car"></div>
+            </div>
+        </div>
+        <div class="btns">
+            <div class="toLeft">左</div>
+            <div class="toRight">右</div>
+        </div>
+    </div>
+    <div class="maskMain">
+        <!-- 拼图失败 -->
+        <div class="gameFaile">
+            <div class="failFace">
+                <img src="img/failFace.png" alt="">
+            </div>
+            <div class="resBtns">
+                <div class="backHome">返回首页</div>
+                <div class="playAgain">再玩一次</div>
+            </div>
+        </div>
+        <!-- 拼图成功 -->
+        <div class="gameSuccess">
+            <div class="successbg">
+                <img src="img/successFace.png" alt="">
+                <div class="toDraw"></div>
+            </div>
+            <div class="successBtns">
+                <div class="backHome">返回首页</div>
+                <div class="playAgain">再玩一次</div>
+            </div>
+        </div>
+        <!-- 点击开奖 -->
+        <div class="openPrize">
+            <img class="lotteryImg" src="img/lotteryImg.png" alt="">
+            <div class="openBtn"></div>
+        </div>
+        <!-- 开奖结果获奖 -->
+        <div class="openRes">
+            <div class="prizeName">
+                <div class="title">恭喜获得</div>
+                <div class="prizeNameDetail"></div>
+            </div>
+            <div class="openResBg">
+                <div class="prizeImg"></div>
+            </div>
+            <div class="getprize"></div>
+        </div>
+        <!-- 开奖结果未获奖 -->
+        <div class="opneResNull">
+            <img class="nullImg" src="img/noGetFace.png" alt="">
+            <div class="successBtns">
+                <div class="backHome">返回首页</div>
+                <div class="playAgain">再玩一次</div>
+            </div>
+        </div>
+        <!-- 获奖列表 -->
+        <div class="prizeList">
+            <div class="toRule"></div>
+            <div class="content">
+                <!-- <li class="listDetail">
+                    <div class="listName">手机一部</div>
+                    <div class="listBtn">前去领取</div>
+                </li> -->
+                <li class="listDetail nolist">暂无中奖纪录</li>
+            </div>
+            <div class="close"></div>
+        </div>
+        <!-- 消息提示 -->
+        <div class="messageBox">
+            <div class="messageContent">抽奖次数已用完，每天分享可增加1次抽奖次数</div>
+            <div class="successBtns">
+                <div class="backHome">返回首页</div>
+                <div class="playAgain">再玩一次</div>
+            </div>
+        </div>
+        <!-- 游戏规则 -->
+        <div class="rule">
+            <div class="toPrizeList"></div>
+            <div class="close"></div>
+        </div>
+        <!-- 提交地址信息 -->
+        <div class="postInfo">
+            <li class="listInfo">
+                <input type="text" name="" id="phoneNo" placeholder="请输入您的手机号">
+            </li>
+            <li class="listInfo">
+                <input class="message" type="text" name="" id="code" placeholder="请输入短信验证码">
+                <div class="sendMessage">发送验证码</div>
+            </li>
+            <li class="listInfo">
+                <input type="text" name="" id="name" placeholder="请输入您的姓名">
+            </li>
+            <li class="listInfo">
+                <section class="express-area">
+                    <a id="expressArea" href="javascript:void(0)">
+                        <dl>
+                            <dd id="cityName">请选择您的所在区域</dd>
+                        </dl>
+                    </a>
+                </section>
+            </li>
+            <li class="listInfo">
+                <input type="text" name="" id="address" placeholder="请输入您的详细地址">
+            </li>
+            <div class="postInfoBtn"></div>
+            <div class="close"></div>
+        </div>
+        <section id="areaLayer" class="express-area-box">
+            <header>
+                <h3>选择地区</h3>
+                <a id="backUp" class="backIcon" href="javascript:void(0)" title="返回"></a>
+                <a id="closeArea" class="closeIcon" href="javascript:void(0)" title="关闭"></a>
+            </header>
+            <article id="areaBox">
+                <ul id="areaList" class="area-list"></ul>
+            </article>
+        </section>
+        <div id="areaMask" class="mask"></div>
+        <script src="js/jquery.area.js"></script>
+    </div>
+
+<script type="text/javascript" src="js/layer.js"></script>
+<script type="text/javascript" src="js/jquery.eraser.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="application/javascript" src="js/localstorage.js"></script>
+<script type="application/javascript" src="js/sessionstorage.js"></script>
+<script type="text/javascript" src="js/wxinit.js"></script>
+<script>
+    var useragent = navigator.userAgent;
+    // if (useragent.match(/MicroMessenger/i) != 'MicroMessenger') {
+    //     // 这里警告框会阻塞当前页面继续加载
+    //     alert('已禁止本次访问：您必须使用微信内置浏览器访问本页面！');
+    //     // 以下代码是用javascript强行关闭当前页面
+    //     var opened = window.open('about:blank', '_self');
+    //     opened.opener = null;
+    //     opened.close();
+    // }
+    var url = location.href.split('#')[0];//url不能写死
+    // var URL = "http://127.0.0.1:8820/activity/api/";
+    var URL = "/activity/api/";
+    // var URL = 'http://qaactivity.1hulian.cn/activity/api/'
+
+    let isGaming = false
+    const openid = cache.get('openid')
+    const activityId = cache.get('activityId')
+    const activityType = cache.get('activityType')
+    const activityTypeId = cache.get('activityTypeId')
+    const nickname = cache.get('nickname')
+    const residueDegree = cache.get('residueDegree')
+    const subscribe = cache.get('subscribe')
+    const turntableId = cache.get('turntableId')
+    const turntableKey = cache.get('turntable_key')
+    const unionid = cache.get('unionid')
+    const userId = cache.get('userId')
+    let userInfo = {}
+    let prizeDetail = {}
+    let prizeLists = []
+    let activityUserDetail
+    let gameTicks = null
+    let messageTicks = null
+    let isHasAddress = false
+    let isLoading = false
+    let isSending = false
+    let waterArr = []
+
+    function ajaxRequest (url, data, method) {
+        if (method == 'POST') {
+            data = JSON.stringify(data)
+        }
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: method,
+                url: URL + url,
+                dataType: 'json',
+                contentType:"application/json",
+                data: data,
+                success: (res) => {
+                    resolve(res)
+                },
+                fail: (error) => {
+                    reject(error)
+                },
+                complete: () => {
+                    isLoading = false
+                    isSending = false
+                }
+            })
+        })
+    }
+
+    const api = {
+        // 获取中奖列表
+        getprizeList: (data) => {
+            return ajaxRequest('activityUser/userPrizeRecord', data, 'GET')
+        },
+        // 获取验证码
+        getCodeNo: (data) => {
+            return ajaxRequest('turntablePrize/verifyingPhone', data, 'POST')
+        },
+        // 提交快递信息
+        postInfo: (data) => {
+            return ajaxRequest('activityUser/completeUserInfo', data, 'POST')
+        },
+        // 抽奖接口
+        toDrawLottery: (data) => {
+            return ajaxRequest('turntablePrize/turntablePrize', data, 'POST')
+        },
+        // 判断用户是否是人保用户
+        checkUser: (data) => {
+            return ajaxRequest(`turntablePrize/checkResources/${data}`, {}, 'GET')
+        }
+    }
+
+    $(function () {
+        // loadTemlateImg();
+    });
+
+    window.onload = function () {
+        s_picc.pageName = '月月有礼'
+        s_picc.prop58 = openid
+        s_picc.prop59 = unionid
+        s_picc.prop57 = ''
+        s_picc.prop52 = userId
+        s_picc.t()
+        // timesInit();
+        // wxinit.init();
+        const tipsText = $('.tips')
+        const home = $('.home')
+        const kits = $('.kits')
+        const gamePage = $('.gamePage')
+        const timeNo = $('.time')
+        const startGame = $('.startGame')
+        const road = $('.road')
+        const car = $('.car')
+        const start = $('.start')
+        const maskMain = $('.maskMain')
+        const gameSuccess = $('.gameSuccess')
+        const openPrize = $('.openPrize')
+        const openRes = $('.openRes')
+        const postInfo = $('.postInfo')
+        const rule = $('.rule')
+        const prizeList = $('.prizeList')
+        const nolist = $('.nolist')
+        const listBtn = $('.listBtn')
+        const gameFaile = $('.gameFaile')
+        const opneResNull = $('.opneResNull')
+        const backHome = $('.backHome')
+        const playAgain = $('.playAgain')
+        const toDraw = $('.toDraw')
+        const openBtn = $('.openBtn')
+        const getprize = $('.getprize')
+        const toRule = $('.toRule')
+        const toPrizeList = $('.toPrizeList')
+        const phoneNo = $('#phoneNo')
+        const code = $('#code')
+        const name = $('#name')
+        const cityName = $('#cityName')
+        const address = $('#address')
+        const sendMessage = $('.sendMessage')
+        const postInfoBtn = $('.postInfoBtn')
+        const close = $('.close')
+        const messageBox = $('.messageBox')
+        const prizeNameDetail = $('.prizeNameDetail')
+        const prizeImg = $('.prizeImg')
+
+        // 轻提示
+        function tips (val) {
+            tipsText.html(val)
+            tipsText.addClass('in')
+            setTimeout(() => {
+                tipsText.removeClass('in')
+            }, 2000)
+        }
+
+        // 关闭遮罩层
+        function closeMask () {
+            maskMain.hide()
+            rule.hide()
+            prizeList.hide()
+            messageBox.hide()
+            postInfo.hide()
+        }
+
+        // 游戏页面开始游戏
+        function gameStart () {
+            home.hide()
+            gamePage.show()
+            createWarter()
+        }
+
+        // 游戏失败
+        function gameFail () {
+            maskMain.show()
+            gameFaile.show()
+        }
+
+        // 返回首页
+        function backHomeHandle () {
+            maskMain.hide()
+            gamePage.hide()
+            home.show()
+            gameFaile.hide()
+            gameSuccess.hide()
+            messageBox.hide()
+            opneResNull.hide()
+            timeNo.html('')
+        }
+
+        // 正则验证手机号
+        function repPhone () {
+            const reg = /^[1][3,4,5,6,7,8,9][0-9]{9}$/
+            return reg.test(phoneNo.val())
+        }
+
+        // 验证提交中奖信息
+        function checkForm (callback) {
+            const phone = phoneNo.val()
+            const codeNo = code.val()
+            const namePerson = name.val()
+            const cityname = cityName.html()
+            const addressDetail = address.val()
+            if (!phone) return tips('请输入手机号！')
+            if (!codeNo) return tips('请输入验证码！')
+            if (!namePerson) return tips('请输入姓名！')
+            if (cityname == '请选择您的所在区域') return tips('请选择所在区域')
+            if (!addressDetail) return tips('请输入详细地址')
+            const data = {
+                phone: phone,
+                telCode: codeNo,
+                realName: namePerson,
+                address: cityname +addressDetail
+            }
+            callback(data)
+        }
+
+        // 判断车辆是否碰到水坑
+        function checkWater (h) {
+            const carinfo = car.css(['left', 'bottom', 'top'])
+            const top = parseInt(carinfo.top)
+            const bottom = parseInt(carinfo.bottom)
+            let score = 0
+            waterArr.forEach((item, index) => {
+                if (item.left == carinfo.left && (bottom + h) > parseInt(item.bottom) && bottom < (parseInt(item.bottom) + h)) {
+                    console.log('进水了')
+                    gameFail()
+                    clearInterval(gameTicks)
+                } else {
+                    if (bottom > (parseInt(item.bottom) + h)) {
+                        score += 10
+                        timeNo.html(`${score}分`)
+                        if (score >= 60) {
+                            console.log('游戏成功')
+                            clearInterval(gameTicks)
+                        }
+                    }
+                }
+            })
+        }
+        
+        // 车辆向左移动
+        $('.toLeft').click(e => {
+            e.preventDefault
+            if (!isGaming) return false
+            car.css({ 'left': 0 })
+        })
+
+        // 车辆向右移动
+        $('.toRight').click(e => {
+            if (!isGaming) return false
+            e.preventDefault
+            car.css({ 'left': '3.1rem' })
+        })
+
+        // 赛车开始倒计时
+        function coolDown () {
+            let arr = []
+            $('.water').each(function () {
+                arr.push($(this).css(['left', 'bottom', 'top']))
+            })
+            waterArr = arr
+            $('.three').fadeIn()
+            setTimeout(() => {
+                $('.three').fadeOut()
+                $('.two').fadeIn()
+            }, 1000)
+            setTimeout(() => {
+                $('.two').fadeOut()
+                $('.one').fadeIn()
+            }, 2000)
+            setTimeout(() => {
+                $('.one').fadeOut()
+                moveRoad()
+            }, 3000)
+        }
+
+        // 生成随机水坑
+        function createWarter () {
+            $('.water').remove()
+            road.css({ 'bottom': 0 })
+            car.css({ 'bottom': 0 })
+            let html = ''
+            let top = 0
+            let left = 0
+            for (let i = 0; i < 12; i ++) {
+                const random = Math.random()
+                if (random > 0.5) {
+                    left = 0
+                } else {
+                    left = 3.1
+                }
+                html += `<div class="water" style="bottom: ${(i + 1) * 8}rem; left: ${left}rem;"></div>`
+            }
+            road.append(html)
+            coolDown()
+        }
+
+        // 路开始移动
+        function moveRoad () {
+            isGaming = true
+            let no = 0
+            const h = car.height()
+            gameTicks = setInterval(() => {
+                no ++
+                road.css({ 'bottom': no * -1 + 'px'})
+                car.css({ 'bottom': no + 'px' })
+                checkWater(h)
+            }, 10);
+        }
+
+        // 暂停游戏
+        $('.pause').click(e => {
+            e.preventDefault()
+            clearInterval(gameTicks)
+        })
+
+        // 点击锦囊
+        kits.click(e => {
+            e.preventDefault()
+            maskMain.show()
+            rule.show()
+        })
+
+        // 点击关闭按钮
+        close.click(e => {
+            e.preventDefault()
+            closeMask()
+        })
+
+        // 首页点击开始游戏
+        startGame.click(e => {
+            e.preventDefault()
+            gameStart()
+        })
+
+        // 跳转中奖纪录
+        toPrizeList.click(e => {
+            e.preventDefault()
+            rule.hide()
+            prizeList.show()
+            const data = {
+                activityId: activityId,
+                activityType: activityType,
+                activityTypeId: activityTypeId,
+                openid: openid
+            }
+            if (isLoading) return
+            isLoading = true
+            api.getprizeList(data).then(res => {
+                console.log(res)
+                if (res.code == 1) {
+                    prizeLists = res.data.turntablePrizeList
+                    activityUserDetail = res.data.activityUserDetail
+                    if (prizeLists.length > 0) {
+                        nolist.hide()
+                        $('.content').html('')
+                        let html = ''
+                        let btnText = ''
+                        activityUserDetail ? btnText = '修改地址' : btnText = '前去领取'
+                        prizeLists.forEach((item, index) => {
+                            html += `<li class="listDetail">
+                                        <div class="listName">${item.prizeName}</div>
+                                        <div class="listBtn" id="${index}" onclick="javascript:void(0)">${btnText}</div>
+                                    </li>`
+                        })
+                        $('.content').append(html)
+                    } else {
+                        nolist.show()
+                    }
+                }
+            })
+        })
+
+        // 中奖纪录领取奖品
+        $(document).on('click', '.listBtn', ({currentTarget:{id}}) => {
+            console.log(prizeLists[id])
+            prizeDetail = prizeLists[id]
+            phoneNo.val('')
+            code.val('')
+            name.val('')
+            cityName.html('请选择您的所在区域')
+            address.val('')
+            prizeList.hide()
+            postInfo.show()
+        })
+
+        // 跳转游戏规则
+        toRule.click(e => {
+            e.preventDefault()
+            prizeList.hide()
+            rule.show()
+        })
+
+        // 挑战成功点击去抽奖
+        toDraw.click((e) => {
+            e.preventDefault()
+            console.log(residueDegree)
+            if (isLoading) return
+            isLoading = true
+            const data = {
+                openid: openid,
+                turntableId: turntableId
+            }
+            api.toDrawLottery(data).then(res => {
+                console.log(res)
+                if (res.code == 1) {
+                    const code = res.data.code
+                    if (code == 4111 || code == 4001) {
+                        gameSuccess.hide()
+                        messageBox.show()
+                    } else {
+                        prizeDetail = res.data
+                        gameSuccess.hide()
+                        openPrize.show()
+                    }
+                } else {
+                    tips(res.message)
+                }
+            })
+        })
+
+        // 返回首页
+        backHome.click(e => {
+            e.preventDefault()
+            backHomeHandle()
+        })
+
+        // 再次挑战
+        playAgain.click(e => {
+            e.preventDefault()
+            maskMain.hide()
+            gameFaile.hide()
+            gameSuccess.hide()
+            openPrize.hide()
+            openRes.hide()
+            opneResNull.hide()
+            prizeList.hide()
+            rule.hide()
+            postInfo.hide()
+            messageBox.hide()
+            timeNo.html('')
+            isGaming = false
+            gameStart()
+        })
+
+        // 点击开奖
+        openBtn.click((e) => {
+            e.preventDefault()
+            openPrize.hide()
+            if (prizeDetail.prizeTitle != '未中奖' && prizeDetail.code != 4110 && prizeDetail.code != 4006) {
+                // 获得奖品
+                prizeNameDetail.html(prizeDetail.prizeName)
+                prizeImg.css('background-image', `url(${prizeDetail.prizePic})`)
+                openRes.show()
+            } else {
+                // 未中奖
+                opneResNull.show()
+            }
+        })
+
+        // 从开奖结果领取获得的奖品
+        getprize.click((e) => {
+            e.preventDefault()
+            openRes.hide()
+            postInfo.show()
+        })
+
+        // 验证手机号
+        phoneNo.blur(() => {
+            if (!repPhone()) {
+                tips('请输入正确的手机号')
+            }
+        })
+
+        // 手机验证码有效期计时
+        function codeTick () {
+            let time = 60
+            let timeTick = setInterval(() => {
+                sendMessage.html(`${time}s后过期`)
+                if (time > 0) {
+                    time --
+                } else {
+                    clearInterval(timeTick)
+                    sendMessage.html('点击重新发送')
+                    sendMessage.removeClass('sending')
+                }
+            }, 1000)
+        }
+
+        // 发送短信验证码
+        sendMessage.click(e => {
+            e.preventDefault()
+            if (!repPhone()) return tips('请输入正确的手机号')
+            sendMessage.addClass('sending').html('发送中...')
+            if (isLoading || isSending) return
+            isLoading = true
+            isSending = true
+            const data = {
+                phone: phoneNo.val(),
+                openid: openid
+            }
+            api.getCodeNo(data).then(res => {
+                console.log(res)
+                if (res.code == 1) {
+                    tips('短信发送成功！')
+                    codeTick()
+                } else {
+                    tips(res.message)
+                }
+            })
+        })
+
+        // 提交领奖信息
+        postInfoBtn.click((e) => {
+            e.preventDefault()
+            checkForm((data) => {
+                if (isLoading) return
+                isLoading = true
+                // data.organization = userInfo.orgno
+                data.organization = ''
+                data.turntablePrizeId = prizeDetail.prizeId
+                let params = {
+                    activityUser: {
+                        openid: openid,
+                        activityId: activityId,
+                        activityType: activityType,
+                        activityTypeId: activityTypeId
+                    },
+                    activityUserDetail: data,
+                    telCode: data.telCode
+                }
+                if (activityUserDetail) params.activityUserDetail.detailId = activityUserDetail.detailId
+                console.log(params)
+                api.postInfo(params).then(res => {
+                    console.log(res)
+                    if (res.code == 1) {
+                        tips('信息提交成功')
+                        // maskMain.hide()
+                        postInfo.hide()
+                        backHomeHandle()
+                    } else {
+                        tips(res.message)
+                    }
+                })
+            })
+        })
+    }
+</script>
+
+</body>
+
+</html>

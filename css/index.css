@@ -1,0 +1,549 @@
+* {
+    padding: 0;
+    margin:0;
+    list-style: none;
+}
+html{
+    width:100%;
+    margin-top:-1px;
+    height: 100%;
+}
+body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+/* 轻提示 */
+.tipsBox {
+    position: fixed;
+    width: 100%;
+    z-index: 1006;
+    display: flex;
+    justify-content: center;
+    top: 3rem;
+}
+
+.tips {
+    background-color: #F7FBFE;
+    padding: 0.3rem;
+    border-radius: 5px;
+    transition: all 0.3s;
+    width: auto;
+    display: inline-block;
+    margin: 0 auto;
+    opacity: 0;
+}
+
+.in {
+    opacity: 1;
+}
+
+/* 信息提示 */
+.messageBox {
+    padding: 0.1rem;
+}
+
+/* 首页 */
+.home {
+    width: 100%;
+    height: 100%;
+    background: url(../img/home.png) no-repeat center;
+    background-size: 100% 100%;
+    position: relative;
+    /* display: none; */
+}
+
+.top {
+    width: 100%;
+    height: 1px;
+}
+
+.kits {
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    top: 0.2rem;
+    right: 0.2rem;
+    background: url(../img/kits.png) no-repeat center;
+    background-size: 100%;
+}
+
+.startGame {
+    width: 4rem;
+    height: 1.5rem;
+    background: url(../img/start.png) no-repeat center;
+    background-size: 100%;
+    margin: 13.5rem auto 0;
+}
+
+/* 游戏页面 */
+.gamePage {
+    width: 100%;
+    height: 100%;
+    background: url(../img/bg.png)no-repeat center;
+    background-size: 100% 100%;
+    position: relative;
+    display: none;
+}
+
+.music {
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url(../img/music.png)no-repeat center;
+    background-size: 100%;
+    position: absolute;
+    right: 0.1rem;
+    top: 0.1rem;
+    animation: musicAni 5s linear infinite;
+}
+
+@keyframes musicAni {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    25% {
+    -webkit-transform: rotate(90deg);
+    }
+
+    50% {
+    -webkit-transform: rotate(180deg);
+    }
+
+    75% {
+    -webkit-transform: rotate(270deg);
+    }
+
+    100% {
+    -webkit-transform: rotate(360deg);
+    }
+}
+
+.time {
+    width: 2rem;
+    height: 1rem;
+    line-height: 1rem;
+    text-align: center;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin: 1rem auto 0;
+}
+
+.gameBox {
+    width: 6rem;
+    height: 10rem;
+    margin: 1rem auto;
+    /* border: 1px solid #B92E0A; */
+    overflow: hidden;
+    position: relative;
+}
+
+.road {
+    width: 100%;
+    height: 100rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #eeeeee;
+    z-index: 1000;
+}
+
+.road::before {
+    content: '';
+    width: 0;
+    height: 100%;
+    border-right: 0.2rem dashed #333333;
+    position: absolute;
+    bottom: 0;
+    left: 2.9rem;
+}
+
+.water {
+    width: 2.9rem;
+    height: 2.9rem;
+    /* left: 0;
+    bottom: 4rem; */
+    position: absolute;
+    background-color: #1296db;
+}
+
+.car {
+    width: 2.9rem;
+    height: 2.9rem;
+    left: 0;
+    bottom: 0;
+    background-color: #B92E0A;
+    position: absolute;
+    z-index: 1001;
+}
+
+.one, .two, .three {
+    width: 2.5rem;
+    height: 2.5rem;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin-left: -1.25rem;
+    display: none;
+    z-index: 1001;
+}
+
+.btns {
+    width: 5rem;
+    height: 1rem;
+    margin: 0.2rem auto 0;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.toLeft, .toRight {
+    width: 1.5rem;
+    height: 0.8rem;
+    background-color: #FCD170;
+    text-align: center;
+    line-height: 0.8rem;
+}
+
+/* 遮罩层 */
+.maskMain {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    top: 0;
+    left: 0;
+    z-index: 1002;
+    display: none;
+}
+
+/* 游戏失败 */
+.gameFaile, .gameSuccess, .openPrize, .openRes, .prizeList, .opneResNull, .rule, .postInfo, .messageBox {
+    width: 7rem;
+    /* border: 1px solid red; */
+    height: 8rem;
+    margin: 3rem auto 0;
+    position: relative;
+}
+
+.prizeList, .rule {
+    height: 10rem !important;
+}
+
+.gameFaile {
+    display: none;
+}
+
+.failFace {
+    width: 7rem;
+    height: 8rem;
+    background: url(../img/gameFail.png) no-repeat center;
+    background-size: 120%;
+    position: relative;
+}
+
+.failFace > img {
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 1.5rem;
+    left: 2rem;
+}
+
+.resBtns {
+    width: 100%;
+    height: 2rem;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.backHome, .playAgain {
+    width: 2.2rem;
+    height: 0.8rem;
+    background-color: #FCD170;
+    border-radius: 5px;
+    font-size: 0.4rem;
+    text-align: center;
+    line-height: 0.8rem;
+    color: #B92E0A;
+    font-weight: bold;
+}
+.backHome {
+    margin-right: 0.5rem;
+}
+
+/* 挑战成功点击抽奖 */
+.gameSuccess {
+    display: none;
+}
+
+.successbg {
+    width: 7rem;
+    height: 8rem;
+    background: url(../img/successbg.png) no-repeat center;
+    background-size: 90%;
+    position: relative;
+}
+
+.successbg >img {
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 1.5rem;
+    left: 2rem;
+}
+
+.toDraw {
+    width: 4.8rem;
+    height: 1rem;
+    position: absolute;
+    top: 6rem;
+    left: 1.1rem;
+    background: url(../img/toPrize.png) no-repeat center;
+    background-size: 100%;
+}
+
+.successBtns {
+    width: 100%;
+    height: 2rem;
+    position: absolute;
+    bottom: -2.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* 点击开奖 */
+.openPrize {
+    display: none;
+}
+
+.lotteryImg {
+    width: 9rem;
+    height: 15rem;
+    position: absolute;
+    top: -4rem;
+    left: -1rem;
+}
+
+.openBtn {
+    width: 3rem;
+    height: 1rem;
+    position: absolute;
+    top: 6rem;
+    left: 2rem;
+    background: url(../img/lottery.png) no-repeat center;
+    background-size: 100%;
+}
+
+/* 中奖结果获奖 */
+.openRes {
+    display: none;
+}
+
+.openResBg {
+    width: 7rem;
+    height: 8rem;
+    background: url(../img/prizeDetail.png) no-repeat center;
+    background-size: 100%;
+    position: absolute;
+    top: -0.5rem;
+    left: -0.25rem;
+}
+
+.prizeImg {
+    width: 2rem;
+    height: 2.4rem;
+    background: url(../img/phone.png) no-repeat center;
+    background-size: 100%;
+    position: absolute;
+    top: 4.5rem;
+    left: 2.7rem;
+}
+
+.prizeName {
+    width: 100%;
+    z-index: 1003;
+    position: absolute;
+    font-size: 0.4rem;
+    font-weight: bold;
+    color: #B92E0A;
+    text-align: center;
+    top: 1rem;
+}
+
+.getprize {
+    width: 4.6rem;
+    height: 1rem;
+    position: absolute;
+    top: 8rem;
+    left: 1.2rem;
+    background: url(../img/getprize.png) no-repeat center;
+    background-size: 100%;
+}
+/* 开奖结果未获奖 */
+.opneResNull {
+    background: url(../img/opneResNull.png) no-repeat center;
+    background-size: 100%;
+    display: none;
+}
+
+.nullImg {
+    width: 3.3rem;
+    position: absolute;
+    top: 2.6rem;
+    left: 1.8rem;
+}
+
+/* 中奖纪录 */
+.prizeList {
+    background: url(../img/prizeList.png) no-repeat center;
+    background-size: 100%;
+    display: none;
+}
+
+.toRule {
+    width: 2.6rem;
+    height: 0.8rem;
+    position: absolute;
+    /* border: 1px solid #B92E0A; */
+    top: 0.45rem;
+    left: 0.05rem;
+}
+
+.content {
+    width: 100%;
+    position: absolute;
+    top: 1.5rem;
+    left: 0;
+}
+
+.listDetail {
+    display: flex;
+    width: 90%;
+    height: 0.8rem;
+    justify-content: space-between;
+    line-height: 0.8rem;
+    font-size: 0.4rem;
+    margin: 0 auto 0.2rem;
+    color: #B82E0A;
+    font-weight: bold;
+}
+
+.nolist {
+    display: none;
+}
+
+.listBtn {
+    width: 2rem;
+    height: 100%;
+    text-align: center;
+    border-radius: 3px;
+    background-color: #F7FBFE;
+}
+/* 游戏规则 */
+.rule {
+    background: url(../img/rule.png) no-repeat center;
+    background-size: 100%;
+    display: none;
+}
+
+.toPrizeList {
+    width: 2.6rem;
+    height: 0.8rem;
+    position: absolute;
+    /* border: 1px solid #B92E0A; */
+    top: 0.45rem;
+    left: 2.85rem;
+}
+/* 领取奖品 */
+.postInfo {
+    height: 10rem !important;
+    background: url(../img/personImg.png) no-repeat center;
+    background-size: 100%;
+    padding-top: 3rem;
+    display: none;
+}
+
+.listInfo {
+    display: flex;
+    width: 80%;
+    height: 0.8rem;
+    justify-content: space-between;
+    line-height: 0.8rem;
+    margin: auto;
+    border-radius: 2px;
+    overflow: hidden;
+    /* border: 1px solid #B82E0A; */
+    margin-bottom: 0.22rem;
+}
+
+.listInfo > input {
+    border: none;
+    font-size: 0.3rem !important;
+    border-radius: 2px;
+    padding-left: 0.3rem;
+    width: 100%;
+}
+
+#cityName {
+    font-size: 0.3rem !important;
+}
+
+.message {
+    width: 3.3rem !important;
+}
+
+.sendMessage {
+    background-color: #F7FBFE;
+    font-size: 0.3rem;
+    width: 2rem;
+    text-align: center;
+    border-radius: 2px;
+    font-weight: bold;
+    color: #B82E0A;
+}
+
+.sending {
+    color: #eee;
+    background-color: #aaa;
+}
+
+.postInfoBtn {
+    width: 6rem;
+    height: 1rem;
+    background: url(../img/postInfo.png) no-repeat center;
+    background-size: 100%;
+    margin: 0.5rem auto 0;
+}
+
+.close {
+    width: 1.2rem;
+    height: 1.2rem;
+    position: absolute;
+    background: url(../img/close.png) no-repeat center;
+    background-size: 100%;
+    bottom: -1.2rem;
+    left: 2.9rem;
+}
+
+/* 消息提示 */
+.messageBox {
+    height: 5rem !important;
+    display: none;
+}
+
+.messageContent {
+    height: 3rem;
+    border-radius: 10px;
+    background-color: #F7FBFE;
+    width: 100%;
+    /* line-height: 3rem; */
+    color: #B82E0A;
+    text-align: center;
+    font-size: 0.5rem;
+    font-weight: bold;
+    padding-top: 0.8rem;
+}
